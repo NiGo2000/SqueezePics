@@ -1,6 +1,6 @@
 from flask import Flask, request
-import cv2
 import numpy as np
+import cv2
 
 app = Flask(__name__)
 
@@ -10,7 +10,7 @@ def compress_image():
     image_data = request.files.get("image")
 
     # Read the image data as a numpy array
-    image = cv2.imdecode(np.fromstring(image_data.read(), np.uint8), cv2.IMREAD_UNCHANGED)
+    image = cv2.imdecode(np.frombuffer(image_data.read(), np.uint8), cv2.IMREAD_UNCHANGED)
 
     # Get the format and quality parameters from the client
     format = request.form.get("format")
