@@ -1,1 +1,0 @@
-from .squeeze_pics import SqueezePics
