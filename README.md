@@ -1,4 +1,4 @@
-# SqueezePics-
+# SqueezePics API
 The SqueezePics API is designed to help reduce the storage and bandwidth requirements of image-intensive applications. The main motive of this API is to provide an easy-to-use tool for compressing images in a way that balances the tradeoff between file size and image quality. This can be especially useful in scenarios where storage space or bandwidth are limited, such as mobile or web applications.
 
 The API can help your projects in several ways:
@@ -19,24 +19,41 @@ Web applications: Web applications often involve a large number of images, which
 
 Image hosting and sharing services: Image hosting and sharing services often require a large amount of storage and bandwidth, making image compression an important consideration. By using the SqueezePics API, you can reduce the storage and bandwidth requirements of your image hosting and sharing services, which can help you save on costs and improve the user experience.
 
-# Here is a tutorial for using the SqueezePics API:
+# Features
 
-1. Import the SqueezePics class:
-from squeeze_pics import SqueezePics
++ Supports both JPEG and PNG image formats
++ Minimal loss in image quality
++ Easy to use API
 
-2. Create an instance of the SqueezePics class:
-api = SqueezePics(compression_level=75)
+# Usage
+To use the SqueezePics API, make a request to the API endpoint with the desired image file. The API will return the compressed image.
 
-3. Call the compress_image method and pass in the input image path and the desired output path:
-api.compress_image('input_image.jpg', 'compressed_image.jpg')
+Example:
 
-4. The compressed image will be saved to the specified output path.
-Note that the compression_level parameter ranges from 0 to 100, with 100 being the highest quality and 0 being the lowest. The default value is 50, which provides a balance between compression and quality.
+```python
+import requests
 
-You can adjust the compression level to your desired level of compression and quality using SqueezePics. Keep in mind that the higher the compression level, the smaller the resulting image size, but the lower the quality of the image.
+url = "https://api.squeezepics.com/compress"
 
+image_file = open("example.jpg", "rb")
 
+response = requests.post(url, files={"image": image_file})
 
+compressed_image = response.content
+```
 
+In this example, the requests library is used to make a POST request to the API endpoint with the desired image file. The compressed image is returned in the response.content variable.
+
+# Requirements
+The SqueezePics API requires the following packages:
+
++ Pillow
++ numpy
+
+You can install these packages using the following command:
+
+```python
+pip install -r requirements.txt
+```
 
 
